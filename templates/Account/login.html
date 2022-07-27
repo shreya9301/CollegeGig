@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- HOME -->
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('{% static 'images/bgimg.jpg' %}');" id="home-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1 class="text-white font-weight-bold">Log In</h1>
+        <div class="custom-breadcrumbs">
+          <a href="{% url 'Job:home' %}">Home</a> <span class="mx-2 slash">/</span>
+          <span class="text-white"><strong>Log In</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="site-section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 mb-5 ">
+
+        {% comment %} {% include 'messages.html' %} {% endcomment %}
+
+        {% if form.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger alert-dismissible">
+          <strong>{{ error|escape }}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissable">
+          <strong>{{ error|escape }}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form method="POST" action="#" class="p-4 border rounded">
+          {% csrf_token %}
+          {% for field in form %}
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0 mt-3">
+                <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}"
+                      id="id_{{ field.name }}" placeholder="{{ field.field.widget.attrs.placeholder }}">
+              </div>
+            </div>
+
+          {% endfor %}
+          <center><div class="row form-group pt-3">
+            <div class="col-md-12">
+              <input type="submit" value="Log In" class="btn px-4 btn-primary text-white">
+            </div>
+          </div></center>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

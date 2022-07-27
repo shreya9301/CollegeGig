@@ -1,0 +1,68 @@
+{
+    "0" : {
+        "19103245@jiit.ac.in" : {
+            "role": "student",
+            "first_name": "Shreya",
+            "last_name": "Singh",
+            "Transcript": {
+                "Semester 1": {
+                    "CP" : "A",
+                    "Mathematics" : "AB"
+                },
+                "Semester 2": {
+                    "OS" : "A",
+                    "DBMS" : "B"
+                },
+                "Semester 3": {
+                    "COA" : "A",
+                    "CN" : "A"
+                },
+                "CGPA" : "8.50"
+            }
+        },
+        "20103018@jiit.ac.in" : {
+            "role": "student",
+            "first_name": "Raghav",
+            "last_name": "Goyal",
+            "Transcript": {
+                "Semester 1": {
+                    "CP" : "A",
+                    "Physics" : "BC",
+                    "DSA": "AB"
+                },
+                "Semester 2": {
+                    "COA" : "A",
+                    "OS" : "A",
+                    "CN" : "AB"
+                },
+                "CGPA" : "9.02"
+            }
+        },
+        "20103223@jiit.ac.in" : {
+            "role": "student",
+            "first_name": "Ayushi",
+            "last_name": "Mittal",
+            "Transcript": {
+                "Semester 1": {
+                    "CP" : "C",
+                    "DBMS": "AB"
+                },
+                "Semester 2": {
+                    "COA" : "D",
+                    "OS" : "B"
+                },
+                "CGPA" : "7.90"
+            }
+        },
+        "prashantkaushik@mail.jiit.ac.in" : {
+            "role": "faculty",
+            "first_name": "Prashant",
+            "last_name": "Kaushik"
+        },
+        "kvimal.kumar@mail.jiit.ac.in" : {
+            "role": "faculty",
+            "first_name": "Vimal",
+            "last_name": "Kumar"
+        }
+    }
+}
