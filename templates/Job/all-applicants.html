@@ -24,10 +24,10 @@
                     <h5 class="card-header text-center mb-5"> All Applicants </h5>
                     <div class="table-responsive">
                         <table class="table text-center">
-                            <thead class="thead-dark">
+                            <thead style="background-color:#1686ba;">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Prerequisites Grades</th>
+                                    <th>Prerequisite Grades</th>
                                     <th>Applied Date</th>
                                     <th>CGPA</th>
                                     <th>View </th>
@@ -37,7 +37,7 @@
                                 {% for applicant, applicant_grades in all_applicants %}
                                 {{ applicant.get_total_applicant }}
                                 <tr>
-                                    <td class="text-center"><a href="">{{ applicant.user.get_full_name }}</a></td>
+                                    <td class="text-center">{{ applicant.user.get_full_name }}</td>
 
                                     <td>
                                         {% for applicant_grade in applicant_grades %}
@@ -48,9 +48,9 @@
                                     <td>{{ applicant.timestamp }}</td>
                                     <td>{{ applicant.user.get_cgpa }}</td>
                                     <td>
-                                        <a class="btn btn-info btn-sm" href="{% url 'Portal:applicant-details' applicant.user.id %}"
+                                        <a class="btn btn-secondary btn-sm" href="{% url 'Job:applicant-details' applicant.user.id %}"
                                                 role="button">
-                                            Click
+                                            Profile
                                         </a>
                                     </td>
 

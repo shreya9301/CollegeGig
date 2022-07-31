@@ -7,7 +7,7 @@
 
 <!-- HOME -->
 <section class="section-hero overlay inner-page bg-image"
-         style="background-image:url('https://us.123rf.com/450wm/everydayplus/everydayplus1707/everydayplus170700039/82524695-job-search-with-resume-and-job-application-on-computer-work-table-background.jpg?ver=6');" id="home-section">
+         style="background-image:url('{% static 'images/bgimg2.jpg' %}');" id="home-section">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
@@ -30,15 +30,15 @@
     <div class="row align-items-center mb-5">
       <div class="col-lg-8 mb-4 mb-lg-0">
         <div class="d-flex align-items-center">
-          <div class="border p-2 d-inline-block mr-3 rounded">
+          <div class="border p-4 d-inline-block mr-4 pr-2 rounded">
             <img src="{% static 'images/job-desc.png' %}" alt="Image">
           </div>
-          <div>
+          <div class="p-2 m-2">
             <h1>{{ job.title }}</h1>
             <div>
-              <span class="ml-2 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{{ job.org_name }}</span>
-              <span class="m-2"><span class="icon-room mr-2"></span>{{ job.campus.name }}</span>
-              <span class="m-2"><span class="icon-clock-o mr-2"></span>
+              <span class="ml-2 mb-2"><i class="bi bi-briefcase-fill"></i><span style="padding-left:6px;">{{ job.org_name }}</span></span>
+              <span class="m-2"><i class="bi bi-geo-alt-fill"></i>{{ job.campus.name }}</span>
+              <span class="m-2"><i class="bi bi-hourglass-bottom"></i>
                 <span class="text-primary">
 
                   {% if job.job_type == '1' %}
@@ -62,28 +62,26 @@
             {% if user.is_authenticated and user.role == 'student' %}
             {% is_job_already_saved job request.user as is_saved %}
             {% if is_saved %}
-            <span href="#" class="btn btn-block btn-light btn-md"><span
-                    class="icon-heart-o mr-2 text-danger"></span>Saved</span>
+            <span href="#" class="btn btn-md" style="background-color:#E37383;height:52px;width:140px;"><svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="35px"><path d="M 12.8125 2 C 12.335938 2.089844 11.992188 2.511719 12 3 L 12 47 C 11.996094 47.359375 12.1875 47.691406 12.496094 47.871094 C 12.804688 48.054688 13.1875 48.054688 13.5 47.875 L 25 41.15625 L 36.5 47.875 C 36.8125 48.054688 37.195313 48.054688 37.503906 47.871094 C 37.8125 47.691406 38.003906 47.359375 38 47 L 38 3 C 38 2.449219 37.550781 2 37 2 L 13 2 C 12.96875 2 12.9375 2 12.90625 2 C 12.875 2 12.84375 2 12.8125 2 Z M 14 4 L 36 4 L 36 45.25 L 25.5 39.125 C 25.191406 38.945313 24.808594 38.945313 24.5 39.125 L 14 45.25 Z"/></svg>Saved</span>
             {% else %}
 
             <form action="{% url 'Job:bookmark-job' job.id %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
-              <input type="submit" class="btn btn-block btn-light btn-md" value="Save Job" />
-
+              <input type="submit" class="btn btn-block btn-secondary btn-md" style="height:52px;width:140px;" value="Save Job" />
             </form>
 
             {% endif %}
 
             {% elif user.role == 'faculty' %}
-            <button onclick="call_sw_alert_func('{% url 'Job:del-job' job.id %}','{{ job.id }}','Once Deleted, You will not be bble to recover this post!')" class="btn btn-block btn-danger btn-md">Delete</button>
+            <button onclick="call_sw_alert_func('{% url 'Job:del-job' job.id %}','{{ job.id }}','Once Deleted, You will not be able to recover this post!')" class="btn btn-block btn-danger btn-md" style="height:52px;width:140px;"><i class="bi bi-trash3"></i></button>
 
             {% else %}
 
             <form action="{% url 'Job:bookmark-job' job.id %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
-              <input type="submit" class="btn btn-block btn-light btn-md" value="Save" />
+              <input type="submit" class="btn btn-block btn-secondary btn-lg" style="height:52px;width:160px" value="Save" />
             </form> 
 
             {% endif %}
@@ -109,13 +107,13 @@
 
             {% elif user.role == 'faculty' %}
 
-            <a href="{% url 'Job:edit-job' job.id %}" class="btn btn-block btn-light btn-md">Edit</a>
+            <a href="{% url 'Job:edit-job' job.id %}" class="btn btn-block btn-light btn-md" style="height:55px;width:160px">Edit&nbsp;<i class="bi bi-pen"></i></a>
             {% else %}
             <form action="{% url 'Job:apply-job' job.id %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
 
-              <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now" />
+              <input type="submit" class="btn btn-block btn-primary btn-md" style="height:55px;width:160px" value="Apply Now" />
             </form>
             {% endif %}
 
@@ -127,8 +125,10 @@
       <div class="col-lg-8">
         <div class="mb-5">
           <!-- <figure class="mb-5"><img src="images/job_single_img_1.jpg" alt="Image" class="img-fluid rounded"></figure> -->
-          <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job
-            Description</h3>
+          <h2 class="h5 d-flex align-items-center mb-4 text-primary">
+            <img src= "{%static 'images/job-desc-icon.png' %}">
+            Job Description
+          </h2>
           {% if job.prerequisites.names %}
           Course Prerequisites :
           <ul>
@@ -146,13 +146,13 @@
             {% if user.is_authenticated and user.role == 'student' %}
             {% is_job_already_saved job request.user as is_saved %}
             {% if is_saved %}
-            <span class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Already Saved Job</span>
+            <span class="btn btn-block" style="background-color:#E37383;height:55px;width:200px;"><span class="mr-2 text-danger"><svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="35px"><path d="M 12.8125 2 C 12.335938 2.089844 11.992188 2.511719 12 3 L 12 47 C 11.996094 47.359375 12.1875 47.691406 12.496094 47.871094 C 12.804688 48.054688 13.1875 48.054688 13.5 47.875 L 25 41.15625 L 36.5 47.875 C 36.8125 48.054688 37.195313 48.054688 37.503906 47.871094 C 37.8125 47.691406 38.003906 47.359375 38 47 L 38 3 C 38 2.449219 37.550781 2 37 2 L 13 2 C 12.96875 2 12.9375 2 12.90625 2 C 12.875 2 12.84375 2 12.8125 2 Z M 14 4 L 36 4 L 36 45.25 L 25.5 39.125 C 25.191406 38.945313 24.808594 38.945313 24.5 39.125 L 14 45.25 Z"/></svg></span>Already Saved</span>
             {% else %}
 
             <form action="{% url 'Job:bookmark-job' job.id %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
-              <input type="submit" class="btn btn-block btn-light btn-md" value="Save" />
+              <input type="submit" class="btn btn-block btn-secondary btn-md" style="height:55px;width:160px;" value="Save" />
 
             </form>
 
@@ -169,7 +169,7 @@
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
 
-              <input type="submit" class="btn btn-block btn-light btn-md" value="Save" />
+              <input type="submit" class="btn btn-block btn-secondary btn-md" style="height:52px;width:160px;" value="Save" />
             </form> 
 
             {% endif %}
@@ -186,7 +186,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="job" value="{{ job.id }}">
 
-                <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now" />
+                <input type="submit" class="btn btn-block btn-primary btn-md" style="height:55px;width:160px;" value="Apply Now" />
                 </form>
             </div>
           {% endif %}
@@ -194,7 +194,7 @@
           {% elif user.role == 'faculty' %}
 
           <div class="col-6">
-            <a href="{% url 'Job:edit-job' job.id %}" class="btn btn-block btn-light btn-md">Edit</a>
+            <a href="{% url 'Job:edit-job' job.id %}" class="btn btn-block btn-light btn-md" style="height:55px;width:160px;">Edit&nbsp;<i class="bi bi-pen"></i></a>
           </div>
 
           {% else %}
@@ -203,7 +203,7 @@
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
 
-              <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now" />
+              <input type="submit" class="btn btn-block btn-primary btn-md" style="height:55px;width:160px;" value="Apply Now" />
             </form>
           </div>
           {% endif %}

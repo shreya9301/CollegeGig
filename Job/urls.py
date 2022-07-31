@@ -48,4 +48,8 @@ urlpatterns = [
     # Delete Job 
     path('dashboard/faculty/delete/<int:id>/', views.delete_job, name='del-job'),
 
+    #delete bookmark
+    path('dashboard/student/delete-bookmark/<int:id>/', views.delete_bookmark, name='del-bookmark'),
+
+
 ]

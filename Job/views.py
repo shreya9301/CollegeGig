@@ -10,13 +10,14 @@ from Job.models import *
 from Job.permission import *
 import json
 import os
+#import re
 from collegegig.settings import MEDIA_ROOT
 
 User = get_user_model()
 
 
-def is_ajax(request):
-    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+# def is_ajax(request):
+#     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 def home_view(request):
 
@@ -47,10 +48,11 @@ def home_view(request):
     cur_page = paginator.get_page(page_no)
     campuses = Campus.objects.all()
 
-    def ajax_test(request):
-        if is_ajax(request=request):
-            next_page_no = cur_page.next_page_number() if cur_page.has_next() else None
-            prev_page_no = cur_page.previous_page_number() if cur_page.has_previous() else None
+
+
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        next_page_no = cur_page.next_page_number() if cur_page.has_next() else None
+        prev_page_no = cur_page.previous_page_number() if cur_page.has_previous() else None
 
         try:
             user_role = request.user.role
@@ -65,6 +67,7 @@ def home_view(request):
             'prev_page_no': prev_page_no,
             'user_role': user_role
         })
+
 
     context = {
         'total_jobs': len(active_jobs),
@@ -93,10 +96,10 @@ def faculty_home_view(request):
     cur_page = paginator.get_page(page_no)
     campuses = Campus.objects.all()
 
-    def ajax_test(req):
-        if is_ajax(request = request):
-            next_page_no = cur_page.next_page_number() if cur_page.has_next() else None
-            prev_page_no = cur_page.previous_page_number() if cur_page.has_previous() else None
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        next_page_no = cur_page.next_page_number() if cur_page.has_next() else None
+        prev_page_no = cur_page.previous_page_number() if cur_page.has_previous() else None
+
         try:
             user_role = request.user.role
         except:
@@ -114,7 +117,8 @@ def faculty_home_view(request):
     context = {
         'total_jobs': len(active_jobs),
         'page_jobs': cur_page,
-        'campuses': campuses
+        'campuses': campuses,
+        'user_name': request.user.first_name + " " + request.user.last_name
     }
 
     return render(request, 'Job/faculty_home.html', context)
@@ -295,7 +299,7 @@ def dashboard(request):
             total_applicants[job.id] = count
 
     if request.user.role == 'student':
-        #saved_jobs = BookmarkJob.objects.filter(user=request.user.id)
+        saved_jobs = BookmarkJob.objects.filter(user=request.user.id)
         applied_jobs = Applicant.objects.filter(user=request.user.id)
 
     context = {
@@ -415,12 +419,19 @@ def bookmark_job_view(request, id):
             'id': id
         }))
 
+def delete_bookmark(request, id):
+    job = get_object_or_404(BookmarkJob, id=id, user=request.user.id)
+
+    if job:
+        job.delete()
+
+    return redirect('Job:dashboard')
+
+
 @login_required(login_url=reverse_lazy('Account:login'))
 @user_is_faculty
 def job_edit(request, id=id):
-    """
-    Handle student Profile Update
-    """
+
     job = get_object_or_404(Job, id=id)
     campuses = Campus.objects.all()
     form = JobEditForm(request.POST or None, instance=job)
@@ -429,7 +440,7 @@ def job_edit(request, id=id):
         instance.save()
         # for save tags
         form.save_m2m()
-        messages.success(request, 'Your Job Post Was Successfully Updated!')
+        messages.success(request, 'Your Job Post was Successfully Updated!')
         return redirect(reverse("Job:single-job", kwargs={
             'id': instance.id
         }))

@@ -119,5 +119,5 @@ def UserLogin(request):
 
 def UserLogout(request):
     auth.logout(request)
-    messages.success(request, 'You are Successfully logged out')
+    #messages.success(request, 'You are Successfully logged out')
     return redirect('Account:login')

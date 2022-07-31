@@ -1,9 +1,9 @@
 {% if page_jobs.has_other_pages %}
 <div class="row pagination-wrap">
-  <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+  <div class="col-2 text-center text-md-left mb-4 mb-md-0">
     <span id="page_navigator">Showing {{ page_jobs.number }} of {{ page_jobs.paginator.num_pages }} Pages</span>
   </div>
-  <div class="col-md-6 text-center text-md-right">
+  <div class="col-6">
     <div class="custom-pagination ml-auto">
 
       <span id="prev_page">
@@ -28,10 +28,9 @@
       </span>
       {% endif %}
     </div>
-    <br>
-    <div class="ml-auto">
-      <a href="{% url 'Job:job-list' %}" id="all-jobs-btn"> <span style="color: white">View All Jobs</span></a>
-    </div>
+  </div>
+  <div class="col-12 mt-3">
+    <a href="{% url 'Job:job-list' %}" id="all-jobs-btn"> <span style="color: white">View All Jobs</span></a>
   </div>
 </div>
 {% endif %}

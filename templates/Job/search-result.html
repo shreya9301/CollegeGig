@@ -32,23 +32,23 @@
           <ul class="job-listing-meta list-unstyled pl-3 mb-0">
             <li class="menu-fix mb-2">
               {% if job.job_type == '1' %}
-              <span class="badge badge-primary">
+              <span class="badge alert-primary">
                   Full Time
                 </span>
               {% elif job.job_type == '2'%}
-              <span class="badge badge-danger">
+              <span class="badge alert-danger">
                   Part Time
                 </span>
               {% elif job.job_type == '3'%}
-              <span class="badge badge-danger">
+              <span class="badge alert-danger">
                   Internship
                 </span>
               {% else  %}
-              <span class="badge badge-info">
+              <span class="badge alert-info">
                   Mentoring
                 </span>
               {% endif %}</li>
-            <li class="badge badge-secondary menu-fix mb-2"> {{ job.campus.name }}</li>
+            <li class="badge alert-secondary menu-fix mb-2"> {{ job.campus.name }}</li>
           </ul>
           <p>{{ job.description | striptags | safe | truncatechars:100}}</p>
         </a>

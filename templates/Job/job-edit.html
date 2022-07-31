@@ -3,15 +3,13 @@
 {% block content %}
 
 <!-- HOME -->
-<section class="section-hero overlay inner-page bg-image" style="background-image: url('images/bgimg.jpeg');" id="home-section">
+<section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/bgimg2.jpg' %});" id="home-section">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
                 <h1 class="text-white font-weight-bold">Post A Job</h1>
                 <div class="custom-breadcrumbs">
-                    <a href="#">Home</a> <span class="mx-2 slash">/</span>
-                    <a href="#">Job</a> <span class="mx-2 slash">/</span>
-                    <span class="text-white"><strong>Edit Job</strong></span>
+                    <span class="text-white"><strong>Edit Job Post</strong></span>
                 </div>
             </div>
         </div>
@@ -25,16 +23,16 @@
         <div class="row align-items-center mb-5">
             <div class="col-lg-12 mb-4 mb-lg-0">
                 <div class="text-center">
-                    <h2>Edit Job</h2>
+                    <h2>EDIT JOB POST</h2>
 
                 </div>
                 {% include 'messages.html' %}
             </div>
         </div>
         <form  method="POST" enctype="multipart/form-data">
-            <div class="row mb-5 p-4 p-md-5 border rounded">
+            <div class="row mb-5 p-4 p-md-5" style="border:2px solid #1686ba;border-radius:7px;">
                 <div class="col-lg-12">
-                    <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
+                    <h3 class="text-black mb-5 border-bottom pb-2"><i class="bi bi-list-nested"></i> Job Details</h3>
                     {% if form.errors %}
                     {% for field in form %}
                     {% for error in field.errors %}
@@ -48,32 +46,32 @@
                     {% csrf_token %}
                     {% for field in form %}
                     {% if field.name == 'job_type' %}
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label for="job-type">Job Type</label>
                         <select name="job_type" class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
-                            <option value="1" {% if field.value = '1' %} selected {% endif %}>Full time</option>
-                            <option value="2" {% if field.value = '2' %} selected {% endif %}>Part time</option>
-                            <option value="3" {% if field.value = "3" %} selected {% endif %}>Internship</option>
-                            <option value="4" {% if field.value = "4" %} selected {% endif %}>Mentoring</option>
-
+                            <option value="1" {% if field.value == "1" %} selected {% endif %}>Full time</option>
+                            <option value="2" {% if field.value == "2" %} selected {% endif %}>Part time</option>
+                            <option value="3" {% if field.value == "3" %} selected {% endif %}>Internship</option>
+                            <option value="4" {% if field.value == "4" %} selected {% endif %}>Internship</option>
+                            
                         </select>
                     </div>
 
                     {% elif field.name == 'campus' %}
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label for="job-type">Campus </label>
                         <select name="campus" class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Campus">
 
                             {% for campus in campuses %}
 
-                            <option value="{{ campus.id }}" {% if campus.id  =  field.value %} selected {% endif %}>{{ campus.name }}</option>
+                            <option value="{{ campus.id }}" {% if campus.id  ==  field.value %} selected {% endif %}>{{ campus.name }}</option>
 
                             {% endfor %}
 
                         </select>
                     </div>
                     {% elif field.name == 'prerequisites' %}
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <table>
                             <th>Course Name&nbsp;&nbsp;</th> <th>Course Description</th>
                             {% for course_name, course_desc in course_list %}
@@ -93,7 +91,7 @@
                                placeholder="{{ field.field.widget.attrs.placeholder }}">
                     </div>
                     {% elif field.name == 'last_date' %}
-                    <div class="form-group">
+                    <div class="form-group mt-4">
 
                         <label class="text-black" for="id_{{ field.name }}">{{ field.label }}</label>
                         <input type="{{ field.field.widget.input_type }}"
@@ -106,7 +104,7 @@
                     </div>
 
                     {% elif field.name == 'description' %}
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label for="job-type">Description</label>
                         <div class="">
                             {{ form.media }}
@@ -116,9 +114,9 @@
 
                     {% else %}
                     {% if field.name == 'org_name'%}
-                    <h3 class="text-black mt-5 mb-5 border-bottom pb-2">Company Details</h3>
+                    <h3 class="text-black mt-4 mb-5 border-bottom pb-2"><i class="bi bi-briefcase"></i><span style="padding-left:4px;">Organisation Details</h3>
                     {% endif%}
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label class="text-black" for="id_{{ field.name }}">{{ field.label }}</label>
                         <input type="{{ field.field.widget.input_type }}"
                                class="form-control"
@@ -130,18 +128,12 @@
                     {% endif %}
                     {% endfor %}
                 </div>
-            </div>
-
-
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-4 ml-auto">
-                    <div class="row">
-                        <div class="col-6">
-
-                            <input class="btn btn-block btn-primary btn-md" type="submit" value="Update" >
-                        </div>
+                <div class="row align-items-center mb-5 mt-4">
+                    <div class="col-12">
+                        <input class="btn btn-block btn-primary btn-md" type="submit" value="Update" >
                     </div>
-                </div>
+            </div>
+            </div>
         </form>
 
     </div>

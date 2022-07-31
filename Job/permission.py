@@ -20,4 +20,4 @@ def user_is_faculty(function):
         else:
             raise PermissionDenied
 
-    return 
+    return wrap
