@@ -1,11 +1,12 @@
 <center>
     <div class="row mb-5">
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <input type="text"  name="job_title_or_org_name" class="form-control form-control-lg" data-live-search="true" placeholder="Search for the job....">
+            <input type="text"  name="job_title_or_org_name" class="form-control form-control-lg" data-live-search="true" placeholder="Search for the job">
         </div>
 
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <select name="campus" class="form-control form-control-lg" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" placeholder="Select Campus">
+            <select name="campus" class="form-control form-control-lg" id = "selectval" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" placeholder="Select Campus">
+                <option selected disabled = "true">Select Campus</option>
                 {% for campus in campuses %}
                     <option class="form-control form-control-lg" value="{{ campus.id }}">{{ campus.name }}</option>
                 {% endfor %}
@@ -13,7 +14,9 @@
         </div>
 
         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <select  name="job_type" class="form-control form-control-lg" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" placeholder="Select Job Type">
+            
+            <select  name="job_type" class="form-control form-control-lg" id = "selectval" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" placeholder="Select Job Type">
+                <option selected disabled = "true">Select Job Type</option>
                 <option value="1">Full Time</option>
                 <option value="2">Part Time</option>
                 <option value="3">Internship</option>

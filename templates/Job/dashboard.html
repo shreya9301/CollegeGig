@@ -106,16 +106,16 @@
 
                     {% elif user.role == "student" %}
 
-                    <ul class="mb-3 nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Bookmarked Jobs</a>
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Bookmarked Jobs</button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="profile" aria-selected="false">Applied Jobs</a>
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Applied Jobs</button>
                         </li>
                     </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <h5 class="card-header text-center">Bookmarked Posts</h5>
                             {% if saved_jobs %}
                             <table class="table text-center mt-5">
@@ -129,14 +129,14 @@
                                 </thead>
                                 <tbody>
                                 {% for job in saved_jobs %}
-                                <tr id="row_{{ job.id }}">
-                                    <td><a href="{% url 'Job:single-job' job.job.id %}">{{ job.job.title }}</a></td>
-                                    <td>{{ job.timestamp | date:'M d, Y'  }}</td>
-                                    <td>{{ job.job.last_date | date:'M d, Y' }}</td>
-                                    <td>
-                                        <button onclick="return confirm('Are you sure you want to delete this ?');" class="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </tr>
+                                    <tr id="row_{{ job.id }}">
+                                        <td><a href="{% url 'Job:single-job' job.job.id %}" style="text-decoration:none;">{{ job.job.title }}</a></td>
+                                        <td>{{ job.timestamp | date:'M d, Y'  }}</td>
+                                        <td>{{ job.job.last_date | date:'M d, Y' }}</td>
+                                        <td>
+                                            <button onclick="return confirm('Are you sure you want to delete this ?');" class="btn btn-danger btn-sm">Delete</button>
+                                        </td>
+                                    </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -145,11 +145,11 @@
                             {% endif %}
                         </div>
 
-                        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <h5 class="card-header text-center">Applied Job Posts</h5>
                             {% if applied_jobs %}
-                            <table class="table text-center mt-5">
-                                <thead class="thead-dark">
+                            <table class="table text-center mt-5" >
+                                <thead class="thead-dark" style="background-color:#1686ba;">
                                     <tr>
                                         <th>Job Title</th>
                                         <th>Date Posted</th>
@@ -179,7 +179,6 @@
             </div>
         </div>
 
-    </div>
     </div>
 </section>
 {% endblock %}

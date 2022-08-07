@@ -720,7 +720,7 @@ h1, h2, h3, h4 {
    }
 
 .job-listings .badge {
-  padding: 12px 12px; 
+  padding: 10px 1px; 
 }
 @media (max-width: 991.98px) {
   .job-listings .custom-width {
@@ -733,8 +733,13 @@ h1, h2, h3, h4 {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease; }
+
+.job-listings .job-listing:nth-child(odd) {
+  background-color: #f7edc5; }
+
 .job-listings .job-listing:last-child {
   border-bottom: none; }
+
 .job-listings .job-listing a {
   position: absolute;
   width: 100%;
@@ -756,7 +761,7 @@ h1, h2, h3, h4 {
   font-size: 1.2rem;
   margin-bottom: 0; }
 .job-listings .job-listing-position strong {
-  color: #b3b3b3; }
+  color: #686767; }
 
 .btn-file {
   position: relative;
@@ -778,7 +783,7 @@ h1, h2, h3, h4 {
   display: block; }
 
 .custom-breadcrumbs a {
-  color: #1686ba; }
+  color: #7c059d; }
 .custom-breadcrumbs a:hover {
   color: #fff; }
 
@@ -929,8 +934,8 @@ h1, h2, h3, h4 {
 .btn.btn-primary {
   color: #fff; }
 .btn.btn-primary:hover {
-  background: #1686ba;
-  border-color: #1686ba; }
+  background: #133275;
+  border-color: #073247; }
 
 .btn.btn-outline-white {
   background: transparent;
@@ -1298,7 +1303,7 @@ h1, h2, h3, h4 {
   padding: 3rem 0;
   position: relative;
   color: rgb(22, 22, 22);
-  background: #1686ba;
+  background: #8f864fc2;
 
 }
 @media (max-width: 991.98px) {

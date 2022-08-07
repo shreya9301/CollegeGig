@@ -43,7 +43,7 @@ def home_view(request):
         for i in range(len(active_jobs)):
             active_jobs_list[i]['campus_name'] = active_jobs[i].campus.get_name()
 
-    paginator = Paginator(active_jobs_list, 3)
+    paginator = Paginator(active_jobs_list, 4)
     page_no = request.GET.get('page', None)
     cur_page = paginator.get_page(page_no)
     campuses = Campus.objects.all()
@@ -91,7 +91,7 @@ def faculty_home_view(request):
     for i in range(len(active_jobs)):
         active_jobs_list[i]['campus_name'] = active_jobs[i].campus.get_name()
 
-    paginator = Paginator(active_jobs_list, 3)
+    paginator = Paginator(active_jobs_list, 4)
     page_no = request.GET.get('page', None)
     cur_page = paginator.get_page(page_no)
     campuses = Campus.objects.all()
