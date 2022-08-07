@@ -717,16 +717,19 @@ h1, h2, h3, h4 {
   padding: 25px;
   overflow: hidden;
   position: relative;
-  background: rgb(212, 211, 211); }
+   }
+
 .job-listings .badge {
-  padding: 10px 4px; 
+  padding: 12px 12px; 
 }
 @media (max-width: 991.98px) {
   .job-listings .custom-width {
     width: 100% !important; } }
 .job-listings .job-listing {
   position: relative;
-  border-bottom: 1px solid rgb(110, 110, 110);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(76, 133, 164);
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease; }
@@ -1294,8 +1297,8 @@ h1, h2, h3, h4 {
 .site-footer {
   padding: 3rem 0;
   position: relative;
-  color: white;
-  background: #555;
+  color: rgb(22, 22, 22);
+  background: #1686ba;
 
 }
 @media (max-width: 991.98px) {
@@ -1331,30 +1334,6 @@ h1, h2, h3, h4 {
 }
 .site-footer ul li a:hover {
   color: #fff; }
-.site-footer .scroll-top {
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgb(27, 25, 25);
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0px 10px 0px rgba(241, 236, 236, 0.949); }
-.site-footer .scroll-top > span {
-  position: absolute;
-  font-size: 2rem;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  color: #000 !important; }
-
 
 .footer-social a, .social a {
   display: inline-block;
