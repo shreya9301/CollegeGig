@@ -2,10 +2,11 @@
 <br />
 <p>
   An online job portal for university students wherein they can apply to the jobs provided by campus faculties. 
+  The members who are a part of college's database are only allowed to register/login to the portal.
   Students can filter jobs according to campus location, job type, etc. to access relevant jobs. 
   Faculty members can post jobs and once they are verified by the moderator, the jobs are published to the portal. 
-  The applicants and their profiles are accessible to the respective faculty member who posted the job. 
-  The profile of the students primarily comprise of their transcript. 
+  The applicants and their profiles are accessible to the respective faculty member who posted the job.<br>
+  The profile of the students primarily comprise of their college's transcript. 
   To be eligible candidate for the job, the students must have prerequisite grades mentioned in the job details. 
   There's also bookmark feature to save job so that the student doesn't have to search for that job repeatedly.
   For this project, I have used dummy data in the form of json format for the transcript details.
