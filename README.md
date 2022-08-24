@@ -12,6 +12,10 @@
   For this project, I have used dummy data in the form of json format for the transcript details.
 </p>
 
+# Demo Video
+[Demo](https://user-images.githubusercontent.com/65105127/186474966-50732560-83ef-4ed0-9799-abdec8c9083e.webm)
+
+
 
 # Installation Process
 ### Install System Dependencies
