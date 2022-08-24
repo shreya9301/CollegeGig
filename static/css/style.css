@@ -735,7 +735,7 @@ h1, h2, h3, h4 {
   transition: .3s all ease; }
 
 .job-listings .job-listing:nth-child(odd) {
-  background-color: #f7edc5; }
+  background-color: #eadcaa; }
 
 .job-listings .job-listing:last-child {
   border-bottom: none; }
